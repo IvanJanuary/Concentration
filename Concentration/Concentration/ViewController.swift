@@ -15,12 +15,21 @@ class ViewController: UIViewController {
         }
     }
     
-
+    func flipButton(emoji: String, button: UIButton) {
+        if button.currentTitle == emoji {
+            button.setTitle("", for: .normal)
+            button.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        } else {
+            button.setTitle(emoji, for: .normal)
+            button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
+    }
+    
     @IBOutlet var buttonCollection: [UIButton]!
     @IBOutlet weak var touchLabel: UILabel!
     @IBAction func buttonAction(_ sender: UIButton) {
         touches += 1
-        
+        flipButton(emoji: "🦊", button: sender)
     }
     
     

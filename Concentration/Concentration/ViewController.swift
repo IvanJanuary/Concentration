@@ -9,13 +9,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var touches = 0
+    var touches = 0 {
+        didSet {
+            touchLabel.text = "Touches: \(touches)"
+        }
+    }
     
 
     @IBOutlet var buttonCollection: [UIButton]!
     @IBOutlet weak var touchLabel: UILabel!
     @IBAction func buttonAction(_ sender: UIButton) {
         touches += 1
+        
     }
     
     

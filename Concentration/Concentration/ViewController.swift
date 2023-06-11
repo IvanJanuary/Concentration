@@ -33,10 +33,7 @@ class ViewController: UIViewController {
         touches += 1
         guard let buttonIndex = buttonCollection.firstIndex(of: sender) else { return }
         flipButton(emoji: emojiCollection[buttonIndex], button: sender)
-        // or
-        // if let buttonIndex = buttonCollection.firstIndex(of: sender) {
-        //    flipButton(emoji: emojiCollection[buttonIndex], button: sender)
-        // }
+        
     }
     
 }

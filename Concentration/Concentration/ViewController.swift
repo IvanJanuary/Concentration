@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var game = ConcentrationGame()
+    lazy var game = ConcentrationGame(numberOfPairsOfCards: (buttonCollection.count + 1) / 2)
     
     var touches = 0 {
         didSet {

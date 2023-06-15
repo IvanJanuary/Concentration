@@ -14,7 +14,8 @@ class ConcentrationGame {
     var indexOfOneAndOnlyFaceUpCard: Int?
     
     func chooseCard(at index: Int) {
-        if !cards[index].isMatched {
+        guard !cards[index].isMatched else { return }
+       // if !cards[index].isMatched {
             if let matchingIndex = indexOfOneAndOnlyFaceUpCard, matchingIndex != index {
                 if cards[matchingIndex].identifier == cards[index].identifier {
                     cards[matchingIndex].isMatched = true
@@ -29,7 +30,7 @@ class ConcentrationGame {
                 cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
             }
-        }
+        //}
     }
     
     init(numberOfPairsOfCards: Int) {
@@ -38,6 +39,6 @@ class ConcentrationGame {
             cards += [card, card]
         }
         // TODO: - Shuffle the cards
-        cards.shuffle()
+            cards.shuffle()
     }
 }

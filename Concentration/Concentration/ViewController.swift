@@ -9,7 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    lazy var game = ConcentrationGame(numberOfPairsOfCards: (buttonCollection.count + 1) / 2)
+    lazy var game = ConcentrationGame(numberOfPairsOfCards: numberOfPairsOfCards)
+    
+    var numberOfPairsOfCards: Int {
+        return (buttonCollection.count + 1) / 2
+    }
     
     var touches = 0 {
         didSet {
@@ -22,11 +26,11 @@ class ViewController: UIViewController {
     var emojiDictionary = [Int: String]()
     
     func emojiIdentifier(for card: Card) -> String {
-        
+
         if emojiDictionary[card.identifier] == nil {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiCollection.count)))
             emojiDictionary[card.identifier] = emojiCollection.remove(at: randomIndex)
-        }
+       }
         return emojiDictionary[card.identifier] ?? "?"
     }
     

@@ -15,9 +15,18 @@ class ViewController: UIViewController {
         return (buttonCollection.count + 1) / 2
     }
     
+    private func updateTouches() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .strokeWidth: 5.0,
+            .strokeColor: UIColor.red
+        ]
+        let attributedString = NSAttributedString(string: "Touches: \(touches)", attributes: attributes)
+        touchLabel.attributedText = attributedString
+    }
+    
     private (set) var touches = 0 {
         didSet {
-            touchLabel.text = "Touches: \(touches)"
+            updateTouches()
         }
     }
     
@@ -50,7 +59,11 @@ class ViewController: UIViewController {
     }
     
     @IBOutlet private var buttonCollection: [UIButton]!
-    @IBOutlet private weak var touchLabel: UILabel!
+    @IBOutlet private weak var touchLabel: UILabel! {
+        didSet {
+            updateTouches()
+        }
+    }
     @IBAction private func buttonAction(_ sender: UIButton) {
         touches += 1
         guard let buttonIndex = buttonCollection.firstIndex(of: sender) else { return }
